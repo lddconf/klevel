@@ -1,5 +1,6 @@
-package com.example.notes.ui.main
+package com.example.notes.ui.activities
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.lifecycle.ViewModelProvider
@@ -21,11 +22,15 @@ class MainActivity : AppCompatActivity() {
         initAppBar()
         initNotesRV()
         initMainViewModel()
+
+
+        val intent = Intent(this, NoteActivity::class.java)
+        startActivity(intent)
+
     }
 
     private fun initAppBar() {
         mainToolbar.title = getString(R.string.app_name)
-
     }
 
     private fun initMainViewModel() {
@@ -40,5 +45,7 @@ class MainActivity : AppCompatActivity() {
         adapter = NotesRVAdapter()
         notes_list.adapter = adapter
     }
+
+
 
 }

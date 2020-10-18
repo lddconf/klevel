@@ -6,19 +6,22 @@ import java.util.*
 //Single tone
 object NotesRepo {
     val notes = mutableListOf<Note>(
-        Note("First label",
-        "First note body",
+        Note( UUID.randomUUID().toString(),
+            "First label555555555555555555555555555555555555555555555555555555555555555",
+            "First note body",
             Calendar.getInstance().time,
-            0xffd0db61.toInt()),
+            Note.PredefinedColor.GREEN),
 
-        Note("Second label",
+        Note(UUID.randomUUID().toString(),
+            "Second label",
             "Second label body",
             Calendar.getInstance().time,
-            0xffd1e231.toInt()),
+            Note.PredefinedColor.ORANGE),
 
-        Note("Third label",
-            "Third label body",
+        Note(UUID.randomUUID().toString(),
+            "Third label",
+            "Third label body 566666666666666666666666666666666666666666666666666666666666",
             Calendar.getInstance().time,
-            0xffd9e650.toInt())
+            Note.PredefinedColor.VIOLET)
     )
 }

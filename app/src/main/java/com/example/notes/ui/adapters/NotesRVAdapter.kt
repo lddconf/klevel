@@ -3,6 +3,8 @@ package com.example.notes.ui.adapters
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.cardview.widget.CardView
+import androidx.core.content.res.ResourcesCompat
 import androidx.recyclerview.widget.RecyclerView
 import com.example.notes.R
 import com.example.notes.data.Note
@@ -38,9 +40,23 @@ class NotesRVAdapter : RecyclerView.Adapter<NotesRVAdapter.NoteViewHolder>() {
     class NoteViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         fun bind(note: Note) = with(itemView) {
             note_title.text = note.title
-            note_date.text = SimpleDateFormat(context.getString(R.string.date_format), Locale.getDefault()).format(note.date)
+            note_date.text = SimpleDateFormat(context.getString(R.string.date_format), Locale.getDefault()).format(note.lastChanged)
             note_body.text = note.text
-            setBackgroundColor(note.color)
+
+            val color = when(note.color) {
+                Note.PredefinedColor.WHITE-> R.color.white
+                Note.PredefinedColor.RED->R.color.red
+                Note.PredefinedColor.ORANGE->R.color.orange
+                Note.PredefinedColor.YELLOW->R.color.yellow
+                Note.PredefinedColor.GREEN->R.color.green
+                Note.PredefinedColor.BLUE->R.color.blue
+                Note.PredefinedColor.DARK_BLUE->R.color.dark_blue
+                Note.PredefinedColor.VIOLET->R.color.violet
+            }
+
+            this as CardView
+            this.setCardBackgroundColor(ResourcesCompat.getColor(resources, color, null));
+
         }
     }
 }
